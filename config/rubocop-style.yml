@@ -1,0 +1,46 @@
+Style/NumericPredicate:
+  EnforcedStyle: comparison
+
+Style/AccessModifierDeclarations: # используется свой только для private
+  Enabled: false
+  EnforcedStyle: inline
+
+Style/GuardClause:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/MutableConstant:
+  Enabled: true
+
+Style/RedundantFreeze:
+  Enabled: true
+
+Style/SingleLineMethods:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  Enabled: true
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/Lambda:
+  Enabled: true
+  EnforcedStyle: literal
+
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining

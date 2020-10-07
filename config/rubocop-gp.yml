@@ -1,0 +1,92 @@
+Gp/AccessModifierDeclarations:
+  Enabled: true
+  EnforcedStyle: inline
+  SupportedStyles:
+    - group
+    - inline
+
+Gp/ClassOrModuleDeclaredInWrongFile:
+  Description: Declare a class or module in the file that matches its namespace and name.
+  Enabled: true
+  Include:
+    - 'app/**/*'
+    - 'lib/**/*'
+
+Gp/ConstAssignedInWrongFile:
+  Description: Assign a const in a file that matches the namespace in which it is scoped.
+  Enabled: true
+  Include:
+    - 'app/**/*'
+    - 'lib/**/*'
+
+Gp/ContinuationSlash:
+  Description: Slash continuation should be reserved for string continatuion. Many times it is
+    used to get around other existing rules.
+  Enabled: true
+
+Gp/DefaultScope:
+  Description: Avoid `default_scope`.  Default scopes make it difficult to
+    refactor data access patterns since the scope becomes part of every query unless
+    explicitly excluded, even when it is unnecessary or incidental to the desired logic.
+  Enabled: true
+
+Gp/FactoryAttrReferencesClass:
+  Description: Cop to enforce "attr { CONST }" instead of "attr CONST" in factories,
+    because the latter forces autoload, which slows down spec startup time and
+    Zeus reload time after touching a model.
+  Enabled: true
+
+Gp/FactoryClassUseString:
+  Description: Cop to tell developers to use :class => "MyClass" instead of :class => MyClass,
+    because the latter slows down reloading zeus.
+  Enabled: true
+
+Gp/MassAssignmentAccessibleModifier:
+  Description: Do no override and objects mass assignment restrictions.
+  Enabled: true
+
+Gp/ModuleMethodInWrongFile:
+  Description: Define a module method in the file that defines the module, not a file that
+    happens to use the module as a namespace.
+  Enabled: true
+  Include:
+    - 'app/**/*'
+    - 'lib/**/*'
+
+Gp/OptArgParameters:
+  Description: Do not use default arguments. Use an options hash instead.
+  Enabled: true
+  StyleGuide: https://github.com/airbnb/ruby#no-default-args
+
+Gp/PhraseBundleKeys:
+  Description: Checks for phrase bundle keys that do not match their respective translation keys.
+  Enabled: true
+
+Gp/PotentialSqlInjection:
+  Description: Disallow ActiveRecord calls that use interpolated or added strings as arguments.
+  Enabled: true
+
+Gp/RspecEnvironmentModification:
+  Description: Disallow Rails.env from being stubbed in half measure ways or from being reassigned
+    Use `stub_env` instead.
+  Enabled: true
+
+Gp/SimpleModifierConditional:
+  Enabled: false
+  StyleGuide: https://github.com/airbnb/ruby#only-simple-if-unless
+
+Gp/SimpleUnless:
+  Enabled: true
+  StyleGuide: https://github.com/airbnb/ruby#unless-with-multiple-conditions
+
+Gp/SpecConstantAssignment:
+  Description: Constant assignment in specs polute global namespace and are a cause of spurious
+    specs. They should be avoided. Also modifing existing constants is bad too, use stub_const
+    instead
+  Enabled: true
+  Exclude:
+    - 'spec/support/**/*'
+
+Gp/UnsafeYamlMarshal:
+  Description: Avoid use of YAML/Marshal methods that can trigger RCE on untrusted input.
+  Enabled: true

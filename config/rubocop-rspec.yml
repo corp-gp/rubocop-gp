@@ -1,0 +1,41 @@
+RSpec/AnyInstance:
+  Enabled: true
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/HookArgument:
+  EnforcedStyle: each
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ImplicitExpect:
+  EnforcedStyle: is_expected
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/NotToNot:
+  EnforcedStyle: not_to
+
+RSpec/VerifiedDoubles:
+  Enabled: false
+
+RSpec/ContextWording:
+  Prefixes:
+    - когда
+    - с
+    - без
+    - если
+    - when
+    - with
+    - without
+    - if
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - "spec/**/*"

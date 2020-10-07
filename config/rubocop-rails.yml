@@ -1,0 +1,11 @@
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Rails/OutputSafety:
+  Enabled: false
+
+Rails/ReversibleMigration:
+  Enabled: false
+
+Rails/LinkToBlank:
+  Enabled: false

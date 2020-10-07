@@ -33,4 +33,7 @@ Now, run:
 $ bin/bundle exec rubocop
 ```
 
-You do not need to include rubocop directly in your application's dependences. This gem will include a specific version of `rubocop` and `rubocop-rspec` that is shared across all projects.
+You do not need to include rubocop directly in your application's dependences. This gem will include:
+- [rubocop-rspec](https://github.com/rubocop-hq/rubocop-rspec)
+- [rubocop-rails](https://github.com/rubocop-hq/rubocop-rails)
+- [rubocop-performance](https://github.com/rubocop-hq/rubocop-performance)

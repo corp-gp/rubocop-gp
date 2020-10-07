@@ -1,0 +1,25 @@
+Metrics/BlockLength:
+  Enabled: true
+  CountComments: false
+  Max: 75
+  ExcludedMethods: [describe]
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: true
+  Max: 15
+
+Metrics/PerceivedComplexity:
+  Enabled: true
+  Max: 15
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false

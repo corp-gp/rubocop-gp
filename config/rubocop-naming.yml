@@ -1,0 +1,5 @@
+Naming/FileName:
+  Exclude:
+    - Gemfile
+    - Gemfile.lock
+    - Guardfile

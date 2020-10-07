@@ -1,0 +1,12 @@
+Lint/UnusedBlockArgument:
+  Exclude:
+    - app/views/**/*
+
+Style/IdenticalConditionalBranches:
+  Exclude:
+    - app/views/**/*
+
+Layout/FirstHashElementLineBreak:
+  Exclude:
+    - app/views/**/*
+
