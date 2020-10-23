@@ -1,0 +1,5 @@
+require:
+  - ./lib/rubocop-gp.rb
+
+inherit_from:
+  - ./config/default.yml
