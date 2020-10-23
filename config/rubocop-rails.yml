@@ -9,3 +9,6 @@ Rails/ReversibleMigration:
 
 Rails/LinkToBlank:
   Enabled: false
+
+Rails/SquishedSQLHeredocs:
+  Enabled: false
