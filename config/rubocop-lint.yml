@@ -1,2 +1,5 @@
 Lint/UnusedMethodArgument:
   AutoCorrect: false
+
+Lint/MissingSuper:
+  Enabled: false
