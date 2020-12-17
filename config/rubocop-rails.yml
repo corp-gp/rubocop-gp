@@ -12,3 +12,13 @@ Rails/LinkToBlank:
 
 Rails/SquishedSQLHeredocs:
   Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: true
+  ForbiddenMethods:
+    - decrement!
+    - increment!
+    - toggle!
+    - update_attribute
+    - update_column
+    - update_columns
