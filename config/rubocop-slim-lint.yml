@@ -10,3 +10,10 @@ Layout/FirstHashElementLineBreak:
   Exclude:
     - app/views/**/*
 
+Gp/ContinuationSlash:
+  Exclude:
+    - app/views/**/*
+
+Layout/FirstArgumentIndentation:
+  Exclude:
+    - app/views/**/*
