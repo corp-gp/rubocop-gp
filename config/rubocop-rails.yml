@@ -22,3 +22,6 @@ Rails/SkipsModelValidations:
     - update_attribute
     - update_column
     - update_columns
+
+Rails/WhereEquals:
+  Enabled: false
