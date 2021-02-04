@@ -1,19 +1,19 @@
 Lint/UnusedBlockArgument:
   Exclude:
-    - app/views/**/*
-
+    - !ruby/regexp /\.slim/
+    
 Style/IdenticalConditionalBranches:
   Exclude:
-    - app/views/**/*
-
+    - !ruby/regexp /\.slim/
+    
 Layout/FirstHashElementLineBreak:
   Exclude:
-    - app/views/**/*
+    - !ruby/regexp /\.slim/
 
 Gp/ContinuationSlash:
   Exclude:
-    - app/views/**/*
-
+    - !ruby/regexp /\.slim/
+    
 Layout/FirstArgumentIndentation:
   Exclude:
-    - app/views/**/*
+    - !ruby/regexp /\.slim/
