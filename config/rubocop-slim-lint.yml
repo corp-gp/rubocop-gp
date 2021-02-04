@@ -1,19 +1,24 @@
 Lint/UnusedBlockArgument:
   Exclude:
     - app/views/**/*
+    - app/components/**/*
 
 Style/IdenticalConditionalBranches:
   Exclude:
     - app/views/**/*
+    - app/components/**/*
 
 Layout/FirstHashElementLineBreak:
   Exclude:
     - app/views/**/*
+    - app/components/**/*
 
 Gp/ContinuationSlash:
   Exclude:
     - app/views/**/*
+    - app/components/**/*
 
 Layout/FirstArgumentIndentation:
   Exclude:
     - app/views/**/*
+    - app/components/**/*
