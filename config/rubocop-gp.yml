@@ -87,6 +87,10 @@ Gp/SpecConstantAssignment:
   Exclude:
     - 'spec/support/**/*'
 
+Gp/SpecNestedDuplicatesLetName:
+  Description: Let name already used on up level (context, describe)'
+  Enabled: true
+
 Gp/UnsafeYamlMarshal:
   Description: Avoid use of YAML/Marshal methods that can trigger RCE on untrusted input.
   Enabled: true
