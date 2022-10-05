@@ -2,7 +2,7 @@ Metrics/BlockLength:
   Enabled: true
   CountComments: false
   Max: 75
-  IgnoredMethods: [describe, context, FactoryBot.define, factory ]
+  AllowedMethods: [describe, context, FactoryBot.define, factory]
 
 Metrics/AbcSize:
   Enabled: false
