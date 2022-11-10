@@ -3,3 +3,8 @@ Naming/FileName:
     - Gemfile
     - Gemfile.lock
     - Guardfile
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+  CheckSymbols: false
+  AllowedPatterns: ['_v\d+\z']
