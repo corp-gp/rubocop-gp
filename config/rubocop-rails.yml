@@ -25,3 +25,6 @@ Rails/SkipsModelValidations:
 
 Rails/WhereEquals:
   Enabled: false
+
+Rails/DeprecatedActiveModelErrorsMethods:
+  Enabled: false
