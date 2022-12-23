@@ -7,4 +7,4 @@ Naming/FileName:
 Naming/VariableNumber:
   EnforcedStyle: snake_case
   CheckSymbols: false
-  AllowedPatterns: ['_v\d+\z']
+  AllowedPatterns: ['_v\d+\z', '(\A|_)h[1-6]\z']
