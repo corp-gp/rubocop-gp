@@ -23,9 +23,6 @@ Style/MutableConstant:
 Style/RedundantFreeze:
   Enabled: true
 
-Style/SingleLineMethods:
-  Enabled: false
-
 Style/TrailingCommaInArguments:
   Enabled: true
   EnforcedStyleForMultiline: consistent_comma
@@ -44,3 +41,7 @@ Style/Lambda:
 
 Style/BlockDelimiters:
   EnforcedStyle: braces_for_chaining
+  
+Style/ClassMethodsDefinitions:
+  Enabled: true
+
