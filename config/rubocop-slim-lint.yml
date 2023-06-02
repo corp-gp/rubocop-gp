@@ -17,3 +17,7 @@ Gp/ContinuationSlash:
 Layout/FirstArgumentIndentation:
   Exclude:
     - !ruby/regexp /\.slim/
+
+Style/RedundantLineContinuation:
+  Exclude:
+    - !ruby/regexp /\.slim/
