@@ -45,3 +45,5 @@ Style/BlockDelimiters:
 Style/ClassMethodsDefinitions:
   Enabled: true
 
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
