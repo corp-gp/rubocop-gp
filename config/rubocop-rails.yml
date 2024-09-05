@@ -28,3 +28,6 @@ Rails/WhereEquals:
 
 Rails/DeprecatedActiveModelErrorsMethods:
   Enabled: false
+
+Rails/WhereRange:
+  Enabled: false
