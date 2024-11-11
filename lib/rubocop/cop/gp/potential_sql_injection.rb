@@ -1,7 +1,7 @@
 module RuboCop
   module Cop
     module Gp
-      class PotentialSqlInjection < Cop
+      class PotentialSqlInjection < Base
         VULNERABLE_AR_METHODS = [
             :pluck,
             :exists?,

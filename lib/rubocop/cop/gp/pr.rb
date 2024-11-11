@@ -9,7 +9,7 @@ module RuboCop
       #
       #   # good
       #   Rails.logger.debug 'A debug message'
-      class Pr < Cop
+      class Pr < Base
         MSG = 'Remove `pr` call or use `Rails.logger.debug` instead.'
 
         def on_send(node)

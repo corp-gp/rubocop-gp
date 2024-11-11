@@ -48,7 +48,7 @@ module RuboCop
       #     private def baz; end
       #
       #   end
-      class AccessModifierDeclarations < Cop
+      class AccessModifierDeclarations < Base
         include ConfigurableEnforcedStyle
 
         GROUP_STYLE_MESSAGE = [
