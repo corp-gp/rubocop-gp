@@ -31,3 +31,6 @@ Rails/DeprecatedActiveModelErrorsMethods:
 
 Rails/WhereRange:
   Enabled: false
+
+Rails/Delegate:
+  Enabled: false
