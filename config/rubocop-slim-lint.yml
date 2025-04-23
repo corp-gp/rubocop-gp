@@ -21,3 +21,7 @@ Layout/FirstArgumentIndentation:
 Style/RedundantLineContinuation:
   Exclude:
     - !ruby/regexp /\.slim/
+
+Lint/UselessAssignment:
+  Exclude:
+    - !ruby/regexp /\.slim/
