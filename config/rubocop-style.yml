@@ -47,3 +47,6 @@ Style/ClassMethodsDefinitions:
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: always
