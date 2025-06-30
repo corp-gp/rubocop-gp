@@ -94,3 +94,10 @@ Gp/SpecNestedDuplicatesLetName:
 Gp/UnsafeYamlMarshal:
   Description: Avoid use of YAML/Marshal methods that can trigger RCE on untrusted input.
   Enabled: true
+
+Gp/InlineNestedModules:
+  Enabled: true
+  SafeAutoCorrect: false
+  Include:
+    - 'app/**/*'
+    - 'lib/**/*'
