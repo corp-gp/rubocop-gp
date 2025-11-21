@@ -41,7 +41,7 @@ Style/Lambda:
 
 Style/BlockDelimiters:
   EnforcedStyle: braces_for_chaining
-  
+
 Style/ClassMethodsDefinitions:
   Enabled: true
 
@@ -50,3 +50,6 @@ Style/StringLiterals:
 
 Style/HashSyntax:
   EnforcedShorthandSyntax: always
+
+Style/ClassAndModuleChildren:
+  Enabled: false
