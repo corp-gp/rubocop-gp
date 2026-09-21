@@ -3,9 +3,13 @@
 module RuboCop
   module Cop
     module Gp
-      # This cop checks for nested module definitions that can be inlined into a single
-      # declaration. It triggers when a series of modules each contain only the next,
-      # and the innermost module contains a single class or module definition.
+      # This cop checks for nested module definitions that can be collapsed into a
+      # namespace declaration. When modules are nested two or more levels deep, every
+      # level except the innermost declaration is joined into a single `module A::B`
+      # line, and the innermost declaration keeps a line of its own.
+      #
+      # Keeping the innermost declaration separate means turning a `module` into a
+      # `class` (or back) never re-indents the whole file.
       #
       # @example
       #
@@ -25,48 +29,80 @@ module RuboCop
       #     end
       #   end
       #
+      #   # bad
+      #   module A
+      #     module B
+      #       module C
+      #         module_function
+      #
+      #         def call
+      #         end
+      #       end
+      #     end
+      #   end
+      #
+      #   # good
+      #   module A::B
+      #     module C
+      #       module_function
+      #
+      #       def call
+      #       end
+      #     end
+      #   end
+      #
       class InlineNestedModules < Base
         extend AutoCorrector
 
-        MSG = 'Inline nested modules unless the last one contains a class or module body.'
+        MSG = 'Inline nested modules into a namespace, keeping the innermost declaration on its own line.'
 
         def on_module(node)
           # Start check from the outermost module, skipping already-namespaced ones.
           return if part_of_nesting?(node) || namespaced?(node)
 
-          chain, last_body = find_nestable_chain(node)
+          chain = find_nestable_chain(node)
+          return if chain.nil?
 
-          # An offense requires at least one level of nesting.
-          return if chain.nil? || chain.size < 2
+          namespace_chain, kept = split_namespace(chain)
+
+          # Nothing to join if only one module would be left in the namespace.
+          return if namespace_chain.size < 2
 
           add_offense(node) do |corrector|
-            autocorrect(corrector, chain, last_body)
+            autocorrect(corrector, namespace_chain, kept)
           end
         end
 
         private
 
-        def autocorrect(corrector, chain, last_body)
-          first_module = chain.first
+        # The innermost module holding a lone class/module declaration is itself part
+        # of the namespace, because that declaration already occupies its own line.
+        # Otherwise the innermost module is the declaration and has to stay separate.
+        def split_namespace(chain)
+          body = chain.last.body
 
-          # 1. Determine indentation settings from config or use a default.
+          if body.class_type? || body.module_type?
+            [chain, body]
+          else
+            [chain[0..-2], chain.last]
+          end
+        end
+
+        def autocorrect(corrector, namespace_chain, kept)
+          first_module = namespace_chain.first
+
           indent_width = cop_config.fetch('IndentationWidth', 2)
           base_indent_col = first_module.loc.keyword.column
           base_indent = ' ' * base_indent_col
 
-          # 2. Build the new `module A::B::C` header.
-          module_names = chain.map { |m| m.children.first.const_name }.join('::')
-          new_module_header = "#{base_indent}module #{module_names}"
+          namespace = namespace_chain.map { |m| m.children.first.const_name }.join('::')
+          new_module_header = "#{base_indent}module #{namespace}"
 
-          # 3. Calculate the change in indentation needed for the moved body.
           new_body_indent_col = base_indent_col + indent_width
-          old_body_indent_col = last_body.loc.keyword.column
-          indent_delta = new_body_indent_col - old_body_indent_col
+          indent_delta = new_body_indent_col - kept.loc.keyword.column
 
-          # 4. Re-indent the body's source code line by line.
           reindented_body_indent = base_indent + (' ' * indent_width)
-          body_source = last_body.source
-          reindented_body = body_source.lines.map do |line|
+          reindented_body = kept.source.lines.map do |line|
             next line if line.strip.empty?
 
             current_indent = line[/^\s*/].length
@@ -75,10 +111,8 @@ module RuboCop
             (' ' * new_indent_size) + line.lstrip
           end.join
 
-          # 5. Assemble the final, corrected code block.
           final_code = "#{new_module_header}\n#{reindented_body_indent}#{reindented_body}\n#{base_indent}end"
 
-          # 6. Replace the original nested block.
           corrector.replace(first_module.source_range, final_code)
         end
 
@@ -86,6 +120,8 @@ module RuboCop
           node.parent&.module_type?
         end
 
+        # Walks down while each module wraps exactly one more module, and returns the
+        # whole chain. The last element is the declaration that keeps its own line.
         def find_nestable_chain(node)
           chain = []
           current_node = node
@@ -95,15 +131,12 @@ module RuboCop
             current_node = current_node.body
           end
 
-          return [nil, nil] unless current_node&.module_type? && !namespaced?(current_node)
+          return unless current_node&.module_type? && !namespaced?(current_node)
+          # An empty innermost module has nothing to namespace.
+          return if current_node.body.nil?
 
-          last_body = current_node.body
-          if last_body && (last_body.class_type? || last_body.module_type?)
-            chain << current_node
-            [chain, last_body]
-          else
-            [nil, nil]
-          end
+          chain << current_node
+          chain
         end
 
         def valid_nesting_link?(node)
